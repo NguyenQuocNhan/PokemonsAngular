@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IPokemon, Pokemon } from '../models/Pokemon.model';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -7,23 +8,20 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit {
-  pokemons: any[] = [];
+
+  pokemons: IPokemon[] = [];
 
   constructor(
     private dataService: DataService
   ) { }
 
   ngOnInit(): void {
-    this.dataService.GetPokemons()
-      .subscribe((response: any) => {
-        response.results.forEach(result => {
-          this.dataService.getMoreData(result.name)
-          .subscribe((uniqResponse: any) => {
-            this.pokemons.push(uniqResponse);
-            console.log(this.pokemons);
-          });
-        });
-      });
+    this.getPokemonList();
+  }
+
+  //
+  getPokemonList(limit: number = 100, offset: number = 0): void {
+    this.dataService.getPokemon(limit, offset).subscribe( res => this.pokemons = res );
   }
 
 }
