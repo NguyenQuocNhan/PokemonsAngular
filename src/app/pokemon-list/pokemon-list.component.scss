@@ -2,24 +2,29 @@
 .pokemon-grid {
   display: grid;
   grid-gap: 16px;
-  padding: 20px;
+  padding: 10px;
+  margin: 10px;
   grid-template-columns: repeat(auto-fit, minmax(13%, 1fr));
 }
 
 .pokemon-grid .image {
   margin-left: auto;
   margin-right: auto;
-  width: max-content;
+  width: 90%;
   background-color: rgba(255, 255, 255, 0.774);
   border-radius: 5px;
-  overflow: hidden;
   margin-bottom: 15px;
 }
 
-.pokemon-grid img:hover {
+.pokemon-grid img {
   width: 100%;
   position: relative;
-  transform: scale(1.2);
+  transition: .1s;
+}
+
+.pokemon-grid img:hover {
+  position: relative;
+  transform: scale(1.3);
   transition: .1s;
 }
 
@@ -39,6 +44,7 @@
   color: rgba(0, 0, 0, 0.726);
   position: relative;
   transition: .1s;
+  position: relative;
 }
 
 .pokemon-grid .box:hover h3 {
@@ -48,10 +54,21 @@
 }
 
 .pokemon-grid .info {
-  background-color: rgba(0, 0, 0, 0.164);
-  margin: 10px;
-  padding: 20px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+  z-index: 0;
+  transition: .1s;
+}
+
+.pokemon-grid .info:hover {
+  z-index: 100;
+  transition: .1s;
+  background-color: rgba(0, 0, 0, 0.264);
 }
 
 .pokemon-grid h3 {
@@ -64,4 +81,12 @@
   color: rgba(255, 255, 255, 0.788);
   border-radius: 50px;
   border: 2px solid rgba(255, 255, 255, 0.342);
+}
+
+.pagination {
+  text-align: center;
+  position: sticky;
+  bottom: 0;
+  background-color: rgb(0, 141, 141);
+  padding: 5px;
 }

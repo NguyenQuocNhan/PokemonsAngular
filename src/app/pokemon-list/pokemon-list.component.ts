@@ -8,22 +8,31 @@ import { DataService } from '../services/data.service';
 })
 export class PokemonListComponent implements OnInit {
   pokemons: any[] = [];
+  page = 1;
+  totalPokemons: number;
 
   constructor(
     private dataService: DataService
   ) { }
 
   ngOnInit(): void {
-    this.dataService.GetPokemons()
+    this.getPokemons()
+  }
+
+  // Get pokemons
+  getPokemons() {
+    this.dataService.GetPokemons(50, (this.page - 1) * 50 + 0)
       .subscribe((response: any) => {
+
+        this.totalPokemons = response.count;
+
         response.results.forEach(result => {
           this.dataService.getMoreData(result.name)
-          .subscribe((uniqResponse: any) => {
-            this.pokemons.push(uniqResponse);
-            console.log(this.pokemons);
-          });
+            .subscribe((uniqResponse: any) => {
+              this.pokemons.push(uniqResponse);
+              console.log(this.pokemons);
+            });
         });
       });
   }
-
 }
