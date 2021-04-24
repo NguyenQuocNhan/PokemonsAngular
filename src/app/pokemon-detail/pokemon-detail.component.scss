@@ -1,0 +1,31 @@
+.pokemon {
+  display: flex;
+  border: 5px solid black;
+}
+
+.main {
+  width: 40%;
+  border: 5px solid black;
+}
+
+.pixels {
+  width: 25%;
+}
+
+.pixel {
+  width: 100%;
+}
+
+.sprites {
+  margin: auto;
+  display: flex;
+  width: 100%;
+}
+
+.sprites div {
+  width: 100%;
+}
+
+img {
+  width: 100%;
+}

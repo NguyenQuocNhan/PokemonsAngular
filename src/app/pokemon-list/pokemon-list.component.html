@@ -5,7 +5,9 @@
     <h2>{{pokemon.id}}</h2>
     <h3>{{pokemon.name}}</h3>
     <div class="image">
-      <img [src]="pokemon.sprites.front_default" alt="pokemon">
+      <a routerLink="/pokemon-detail/{{pokemon.id}}">
+        <img [src]="pokemon.sprites.front_default" alt="pokemon">
+      </a>
     </div>
     <div class="info">
       <p>

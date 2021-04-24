@@ -16,21 +16,25 @@ export class PokemonListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getPokemons()
+    this.getPokemons();
+  }
+
+  clicked(): void {
+    window.alert("click");
   }
 
   // Get pokemons
   getPokemons() {
     this.dataService.GetPokemons(50, (this.page - 1) * 50 + 0)
-      .subscribe((response: any) => {
+      .subscribe((res: any) => {
 
-        this.totalPokemons = response.count;
+        this.totalPokemons = res.count;
 
-        response.results.forEach(result => {
+        res.results.forEach(result => {
           this.dataService.getMoreData(result.name)
-            .subscribe((uniqResponse: any) => {
-              this.pokemons.push(uniqResponse);
-              console.log(this.pokemons);
+            .subscribe((uniqres: any) => {
+              this.pokemons.push(uniqres);
+              //console.log(this.pokemons);
             });
         });
       });

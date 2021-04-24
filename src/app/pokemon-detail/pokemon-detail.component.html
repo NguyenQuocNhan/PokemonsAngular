@@ -1,0 +1,26 @@
+<button (click)="back()">Back</button>
+
+<div *ngIf="pokemon">
+  <p>{{pokemon.id}}</p>
+  <h2>{{pokemon.name}}</h2>
+</div>
+<hr>
+<div *ngIf="pokemon" class="pokemon">
+  <div class="main">
+    <img width="500px" src="{{pokemon.sprites.other.dream_world.front_default}}" alt="">
+  </div>
+  <hr>
+  <div class="pixels">
+    <div class="pixel">
+      <img src="{{pokemon.sprites.front_default}}" alt="">
+    </div>
+    <hr>
+    <div class="sprites">
+      <div><img src="{{pokemon.sprites.back_default}}" alt=""></div>
+      <div><img src="{{pokemon.sprites.back_shiny}}" alt=""></div>
+      <div><img src="{{pokemon.sprites.front_shiny}}" alt=""></div>
+    </div>
+  </div>
+  <hr>
+</div>
+<hr>
